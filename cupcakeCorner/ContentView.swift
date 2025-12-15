@@ -19,14 +19,30 @@ struct response : Codable {
 struct ContentView: View {
     @State private var resArray : [result] = []
     var body: some View {
+        
+        VStack(spacing: 0){
+            AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            } .frame(maxWidth: .infinity, maxHeight: 200)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .padding()
+                .zIndex(1)
+        }
+
         List{
             VStack(alignment: .leading){
                 ForEach(resArray, id: \.trackId){
                     k in
                     Text(k.trackName)
-                        .font(.title)
+                        .font(.title2)
+                        .foregroundStyle(.red)
                     Text(k.collectionName)
-                        .font(.headline)
+                        .font(.caption)
                     Divider()
                 }
                 
