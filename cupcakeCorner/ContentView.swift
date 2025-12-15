@@ -17,10 +17,15 @@ struct response : Codable {
 }
 
 struct ContentView: View {
+    @State private var userN = ""
+    @State private var pwd = ""
+    private var disableButton : Bool {
+        userN.isEmpty || pwd.count < 5
+    }
     @State private var resArray : [result] = []
     var body: some View {
         
-        VStack(spacing: 0){
+        VStack{
             AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { image in
                 image
                     .resizable()
@@ -28,7 +33,7 @@ struct ContentView: View {
             } placeholder: {
                 ProgressView()
             } .frame(maxWidth: .infinity, maxHeight: 200)
-                .background(.ultraThinMaterial)
+                .background(.ultraThickMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
                 .zIndex(1)
@@ -36,11 +41,20 @@ struct ContentView: View {
 
         List{
             VStack(alignment: .leading){
+                Section {
+                    TextField("Name", text: $userN)
+                    TextField("pass", text: $pwd)
+                    Button("login") {
+                        print("hi")
+                    }
+                    .disabled(disableButton)
+                }
+                
                 ForEach(resArray, id: \.trackId){
                     k in
                     Text(k.trackName)
                         .font(.title2)
-                        .foregroundStyle(.red)
+
                     Text(k.collectionName)
                         .font(.caption)
                     Divider()
