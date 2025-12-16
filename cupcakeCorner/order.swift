@@ -29,6 +29,7 @@ class order {
     var city = ""
     var street = ""
     
+    
     var hasValidDataForAddressPage: Bool {
         if (name.isEmpty || zip.isEmpty || city.isEmpty || street.isEmpty) {
             return false

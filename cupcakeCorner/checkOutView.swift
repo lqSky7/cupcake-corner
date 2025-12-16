@@ -11,7 +11,7 @@ struct checkOutView: View {
     let orderInstance : order
     var body: some View {
         NavigationStack{
-            
+            Text("hi")
         }
     }
 }
