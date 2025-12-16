@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct addressView: View {
-    let orderInstance : order
+    @Bindable var orderInstance : order
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TextField("Enter city", text: $orderInstance.city)
+        TextField("Enter zip", text: $orderInstance.zip)
+        TextField("Enter name", text: $orderInstance.name)
+        TextField("Enter street", text: $orderInstance.street)
     }
 }
 

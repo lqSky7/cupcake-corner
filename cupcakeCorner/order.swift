@@ -24,4 +24,8 @@ class order {
     var addSprinkles = false
     var extraFrosting = false
     
+    var name = ""
+    var zip = ""
+    var city = ""
+    var street = ""
 }
