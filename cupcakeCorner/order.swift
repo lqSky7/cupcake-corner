@@ -12,8 +12,15 @@ class order {
     
     var type = 0
     var quantity = 2
-
-    var specialRequest = false
+    
+    var specialRequest = false {
+        didSet {
+            if specialRequest == false {
+                addSprinkles = false
+                extraFrosting = false
+            }
+        }
+    }
     var addSprinkles = false
     var extraFrosting = false
     
